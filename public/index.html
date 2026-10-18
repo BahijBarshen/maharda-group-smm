@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
+<title>mahardagroup-smm: social growth, priced per 1,000</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header>
+  <div class="logo">mahardagroup-smm</div>
+  <div class="acct" id="acct"></div>
+</header>
+
+<section class="hero">
+  <h1>Grow your audience. Pay by the thousand.</h1>
+  <p>Add funds once, then order in seconds. You see the exact price before you confirm.</p>
+</section>
+
+<main>
+  <div class="list">
+    <div class="tabs" id="tabs" role="tablist" aria-label="Platforms"></div>
+    <div class="filters"><input id="search" type="search" placeholder="Search services" aria-label="Search services" autocomplete="off"><select id="cat" aria-label="Category"></select></div>
+    <div id="rows"><p class="row">Loading services…</p></div>
+  </div>
+  <aside class="panel" id="panel">
+    <h2 id="title">Select a service</h2>
+    <label for="link">Link to your profile or post</label>
+    <input id="link" type="url" inputmode="url" placeholder="https://instagram.com/yourname" autocomplete="off" maxlength="300">
+    <label for="qty">Quantity</label>
+    <input id="qty" type="number" inputmode="numeric">
+    <div class="hint" id="range"></div>
+    <div class="total"><span>Total</span><strong id="total">$0.00</strong></div>
+    <button class="btn solid block" id="buy" disabled>Place order</button>
+    <div class="msg" id="msg" role="status"></div>
+  </aside>
+</main>
+<footer>Results and delivery speed vary by service. We never ask for your password.</footer>
+
+<dialog id="authD" aria-labelledby="authT">
+  <div class="dhead"><h2 id="authT">Sign in</h2><button class="btn" data-close>Close</button></div>
+  <div id="emBox"><label for="em">Email</label><input id="em" type="email" autocomplete="email" maxlength="254"></div>
+  <div id="phoneBox" hidden><label for="ph">Phone number</label><div class="phone-fields"><select id="phCode" aria-label="Country calling code"></select><input id="ph" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="512345678" maxlength="20"></div>
+    <p class="hint">Used only so support can reach you about your orders and payments.</p></div>
+  <div id="idBox" hidden><label for="fid">Phone number or email</label><div class="phone-fields"><select id="fidCode" aria-label="Country calling code"></select><input id="fid" autocomplete="username" maxlength="254" placeholder="Phone number or email"></div></div>
+  <div id="chBox" hidden><label>Send my code to</label><div id="chOpts"></div><p class="hint" id="chHelp"></p></div>
+  <div id="cdBox" hidden><label for="cd">6-digit code</label><input id="cd" inputmode="numeric" autocomplete="one-time-code" maxlength="6"><p class="hint">Did not get it? Wait a minute, go back and request a new one.</p></div>
+  <div id="pwBox"><label for="pw" id="pwL">Password</label><input id="pw" type="password" autocomplete="current-password" minlength="8" maxlength="128"></div>
+  <button class="btn solid block mt" id="authGo">Sign in</button>
+  <button class="btn block mt-s" id="authSwap">Create an account</button>
+  <button class="btn block mt-s" id="authForgot">Forgot your password?</button>
+  <div class="msg" id="authMsg" role="alert"></div>
+</dialog>
+
+<dialog id="accD" aria-labelledby="aT">
+  <div class="dhead"><h2 id="aT">My account</h2><button class="btn" data-close>Close</button></div>
+  <label>Your user ID</label><div class="idbox" id="accId"></div>
+  <p class="hint">Quote this ID when you contact support.</p>
+  <label>Email</label><div id="accEm"></div>
+  <label>Telegram</label><div id="accTg"></div><p class="hint">Connecting Telegram verifies your phone number and lets you recover your password there.</p>
+  <label for="accPh">Phone number</label><div class="phone-fields"><select id="accCode" aria-label="Country calling code"></select><input id="accPh" type="tel" autocomplete="tel-national" inputmode="tel" placeholder="512345678" maxlength="20"></div>
+  <button class="btn block mt-s" id="accSave">Save phone number</button>
+  <label for="cpw">Current password</label><input id="cpw" type="password" autocomplete="current-password" maxlength="128">
+  <label for="npw">New password</label><input id="npw" type="password" autocomplete="new-password" minlength="8" maxlength="128">
+  <button class="btn block mt-s" id="pwSave">Change password</button>
+  <div class="msg" id="accMsg" role="alert"></div>
+</dialog>
+
+<dialog id="fundsD" aria-labelledby="fT">
+  <div class="dhead"><h2 id="fT">Add funds</h2><button class="btn" data-close>Close</button></div>
+  <div id="methods"></div>
+  <label for="amt">Amount</label>
+  <input id="amt" type="number" inputmode="decimal" step="0.01">
+  <div class="chips" id="chips"></div>
+  <div id="manualBox" hidden>
+    <p class="hint note" id="instr"></p>
+    <label for="ref">Transfer reference or transaction number</label><input id="ref" maxlength="80" autocomplete="off">
+    <label for="receipt">Transfer notification image (JPG, PNG or WebP)</label><input id="receipt" type="file" accept="image/jpeg,image/png,image/webp">
+    <img id="prev" class="prev" alt="Receipt preview" hidden>
+    <p class="hint">Enter the amount you actually sent above. An admin checks the receipt, the transaction number and the amount, then adds the funds to your balance.</p>
+  </div>
+  <button class="btn solid block mt" id="fundGo">Continue</button>
+  <div class="msg" id="fundMsg" role="alert"></div>
+</dialog>
+
+<dialog id="ordersD" aria-labelledby="oT">
+  <div class="dhead"><h2 id="oT">My activity</h2><button class="btn" data-close>Close</button></div>
+  <label>Orders</label><div id="oList"></div>
+  <label>Payments</label><div id="tList"></div>
+</dialog>
+<script src="/app.js"></script>
+</body>
+</html>

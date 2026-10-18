@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex,nofollow">
+<title>MahardaGroup-SMM</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<div id="login" class="login" hidden>
+  <h1>Admin sign in</h1>
+  <label for="pw">Password</label>
+  <input id="pw" type="password" autocomplete="current-password">
+  <button class="btn solid block mt" id="go">Sign in</button>
+  <div class="msg" id="lmsg" role="alert"></div>
+</div>
+<div id="app" hidden>
+  <header><div class="logo">MahardaGroup-SMM</div>
+    <div class="acct"><span id="demo" class="badge" hidden>Demo mode</span><a class="btn" href="/">Open store</a><button class="btn" id="out">Sign out</button></div></header>
+  <nav class="tabs" id="nav" role="tablist">
+    <button data-t="overview">Overview</button><button data-t="users">Users</button><button data-t="txns">Payments</button>
+    <button data-t="orders">Orders</button><button data-t="services">Services</button><button data-t="settings">Settings</button>
+  </nav>
+  <section class="pad" id="view"></section>
+</div>
+<dialog id="uD" aria-labelledby="uT">
+  <div class="dhead"><h2 id="uT">Edit user</h2><button class="btn" data-close>Close</button></div>
+  <label>User ID</label><div class="idbox" id="uId"></div>
+  <label for="uEm">Email</label><input id="uEm" type="email" maxlength="254">
+  <label for="uPh">Phone (with country code)</label><input id="uPh" type="tel" maxlength="25" placeholder="+31 6 12345678">
+  <label for="uPw">New password (leave empty to keep)</label><input id="uPw" type="text" autocomplete="off" maxlength="128">
+  <label class="inline"><input id="uBan" type="checkbox"> Banned (cannot sign in or order)</label>
+  <button class="btn solid block mt" id="uSave">Save changes</button>
+  <div class="bar"><button class="btn" id="uLink">Create password reset link</button><button class="btn" id="uOut">Sign out all devices</button></div>
+  <input id="uLinkOut" readonly hidden aria-label="Reset link">
+  <div class="msg" id="uMsg" role="status"></div>
+</dialog>
+<dialog id="rD" aria-labelledby="rT">
+  <div class="dhead"><h2 id="rT">Receipt</h2><button class="btn" data-close>Close</button></div>
+  <p class="hint" id="rInfo"></p>
+  <img id="rImg" class="prev" alt="Transfer notification" hidden>
+  <div class="bar"><a class="btn" id="rOpen" target="_blank" rel="noopener">Open full size</a></div>
+</dialog>
+<script src="/admin.js"></script>
+</body>
+</html>
